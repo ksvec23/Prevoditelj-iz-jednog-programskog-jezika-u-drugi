@@ -1,0 +1,23 @@
+writeln_var(X) :- writeln(X).
+
+while_loop(X) :-
+    Cond,        % uvjet (evaluira se s trenutnim varijablama)
+    Body,        % tijelo
+    update_vars, % inkrement/izmjena varijabli
+    while_loop(NewX).
+while_loop(X) :-
+    \+ Cond.       % završetak kada uvjet nije zadovoljen
+
+
+% for_loop(Start, End) – ispisuje brojeve od Start do End-1
+for_loop(Start, End) :-
+    Max is End - 1,     % računamo granicu
+    for_loop_range(Start, Max).
+
+for_loop_range(I, Max) :-
+    I =< Max,
+    writeln(I),
+    I1 is I + 1,
+    for_loop_range(I1, Max).
+for_loop_range(I, Max) :-
+    I > Max.            % završetak rekurzije
